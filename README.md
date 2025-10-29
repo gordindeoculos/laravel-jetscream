@@ -45,6 +45,7 @@ composer install
 
 ```bash
 npm install
+npm run build
 ```
 
 ### 4. Criar o arquivo `.env`
@@ -148,12 +149,6 @@ Inicie o servidor Laravel:
 
 ```bash
 php artisan serve
-```
-
-E o Vite (para assets CSS/JS):
-
-```bash
-npm run build
 ```
 
 Acesse o projeto em:
