@@ -99,10 +99,12 @@ Adicione o idioma `pt_BR`:
 php artisan lang:add pt_BR
 ```
 
-Defina o idioma no arquivo `config/app.php`:
+Defina o idioma no arquivo `.env`:
 
-```php
-'locale' => 'pt_BR',
+```
+APP_LOCALE=pt_BR
+APP_FALLBACK_LOCALE=pt_BR
+APP_FAKER_LOCALE=pt_BR
 ```
 
 ---
