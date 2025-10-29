@@ -1,59 +1,176 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 Projeto Laravel 12 com Jetstream + Livewire (Ambiente Laragon)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este projeto foi criado como base para estudos e desenvolvimento com **Laravel 12**, utilizando **Jetstream** com **Livewire** e tradução para **pt_BR**.  
+O ambiente de desenvolvimento foi configurado com **Laragon**, e o envio de e-mails locais é feito através do **MailPit**.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🧩 Tecnologias Utilizadas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Laravel 12**
+- **PHP 8.2+**
+- **Jetstream**
+- **Livewire**
+- **Tailwind CSS**
+- **Vite**
+- **MailPit** (para testes de e-mail)
+- **Laragon** (ambiente local)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## ⚙️ Requisitos do Ambiente
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Antes de iniciar, verifique se você possui:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- [Laragon (Full)](https://laragon.org/download/)
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🏗️ Instalação do Projeto
 
-### Premium Partners
+### 1. Clonar o repositório
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```bash
+git clone https://github.com/gordindeoculos/laravel-jetscream
+cd laravel-jetscream
+````
 
-## Contributing
+### 2. Instalar dependências PHP
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+composer install
+```
 
-## Code of Conduct
+### 3. Instalar dependências JavaScript
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+npm install
+```
 
-## Security Vulnerabilities
+### 4. Criar o arquivo `.env`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Copie o arquivo de exemplo:
 
-## License
+```bash
+cp .env.example .env
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Gere a chave da aplicação:
+
+```bash
+php artisan key:generate
+```
+
+### 5. Configurar o banco de dados
+
+No arquivo `.env`, defina as credenciais do banco de dados local (Laragon):
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Crie o banco manualmente no **phpMyAdmin** (ou via terminal) e rode as migrações:
+
+```bash
+php artisan migrate
+```
+
+---
+
+## 🌍 Tradução para Português (pt_BR)
+
+O projeto utiliza o pacote **laravel-lang** para traduzir todas as mensagens padrão.
+
+Instale o pacote:
+
+```bash
+composer require laravel-lang/common --dev
+```
+
+Adicione o idioma `pt_BR`:
+
+```bash
+php artisan lang:add pt_BR
+```
+
+Defina o idioma no arquivo `config/app.php`:
+
+```php
+'locale' => 'pt_BR',
+```
+
+---
+
+## ✉️ Configuração do MailPit (Laragon)
+
+O **MailPit** é utilizado para capturar e-mails de teste localmente.
+No Laragon, ative:
+**Menu → Mail → MailPit**
+
+Atualize o arquivo `.env` com as configurações abaixo:
+
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=127.0.0.1
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="teste@local.dev"
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+A interface do MailPit estará disponível em:
+👉 [http://127.0.0.1:8025](http://127.0.0.1:8025)
+
+---
+
+## 🧠 Recursos Inclusos
+
+✅ Autenticação com Login e Registro
+✅ Recuperação de Senha
+✅ Gerenciamento de Perfil de Usuário
+✅ Tradução completa para pt_BR
+✅ Layout padrão com Tailwind CSS
+✅ Integração com MailPit para testes de e-mail
+✅ Pronto para customização e expansão
+
+---
+
+## 🚀 Executar o Projeto
+
+Inicie o servidor Laravel:
+
+```bash
+php artisan serve
+```
+
+E o Vite (para assets CSS/JS):
+
+```bash
+npm run build
+```
+
+Acesse o projeto em:
+👉 [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+---
+
+## 📄 Licença
+
+Este projeto está licenciado sob a **MIT License**.
+Sinta-se livre para usar, modificar e distribuir.
+
+---
+
+## 👨‍💻 Autor
+
+**Renato Teixeira Gomes**
+Canal: [Gordin de Óculos - Informática e Tecnologia](https://www.youtube.com/@gordindeoculos)
+📧 E-mail: [gordindeoculos.dev@gmail.com](mailto:gordindeoculos.dev@gmail.com)
+
